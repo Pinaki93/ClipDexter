@@ -6,7 +6,9 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import dev.pinaki.clipdexter.navigation.Navigation
+import dev.pinaki.clipdexter.viewmodels.UtilitiesViewModel
 import org.jetbrains.compose.ui.tooling.preview.Preview
+import org.koin.compose.koinInject
 
 @Composable
 @Preview
@@ -16,7 +18,8 @@ fun App() {
             modifier = Modifier.fillMaxSize(),
             color = MaterialTheme.colorScheme.background
         ) {
-            Navigation()
+            val utilitiesViewModel: UtilitiesViewModel = koinInject()
+            Navigation(utilitiesViewModel)
         }
     }
 }

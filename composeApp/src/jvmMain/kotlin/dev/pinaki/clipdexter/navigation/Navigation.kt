@@ -7,6 +7,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import dev.pinaki.clipdexter.ui.screens.DetailScreen
 import dev.pinaki.clipdexter.ui.screens.ListScreen
+import dev.pinaki.clipdexter.viewmodels.UtilitiesViewModel
 
 sealed class Screen {
     object List : Screen()
@@ -27,12 +28,13 @@ class NavigationState {
 }
 
 @Composable
-fun Navigation() {
+fun Navigation(utilitiesViewModel: UtilitiesViewModel) {
     val navigationState = remember { NavigationState() }
     
     when (val screen = navigationState.currentScreen) {
         is Screen.List -> {
             ListScreen(
+                utilitiesViewModel = utilitiesViewModel,
                 onItemClick = { itemId ->
                     navigationState.navigateToDetail(itemId)
                 }
@@ -41,6 +43,7 @@ fun Navigation() {
         is Screen.Detail -> {
             DetailScreen(
                 itemId = screen.itemId,
+                utilitiesViewModel = utilitiesViewModel,
                 onBackClick = {
                     navigationState.navigateBack()
                 }

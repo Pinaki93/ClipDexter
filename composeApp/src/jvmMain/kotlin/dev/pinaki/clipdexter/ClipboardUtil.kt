@@ -9,7 +9,11 @@ object ClipboardUtil {
     fun copyToClipboard(text: String): Boolean {
         return try {
             val clipboard: Clipboard = Toolkit.getDefaultToolkit().systemClipboard
-            val selection = StringSelection(text)
+            
+            // Convert \n sequences to actual newlines
+            val processedText = text.replace("\\n", "\n")
+            
+            val selection = StringSelection(processedText)
             clipboard.setContents(selection, selection)
             true
         } catch (e: Exception) {
