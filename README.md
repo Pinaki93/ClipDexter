@@ -1,16 +1,20 @@
-# ClipDexter - Python Utilities Management System
+# ClipDexter - Clipboard Management with Python Scripts
 
-ClipDexter is a Kotlin Multiplatform desktop application that provides a comprehensive Python utilities management system. It allows users to run Python scripts on clipboard data and manage a collection of text processing utilities.
+ClipDexter is a powerful desktop application built with **Jetpack Compose** that transforms your clipboard into a programmable text processing powerhouse. Write Python scripts to manipulate clipboard content instantly - perfect for developers, content creators, and power users who need quick text transformations.
+
+## 🎯 Core Concept
+
+**Copy → Process → Paste** - That's it! Copy any text to your clipboard, run a Python script on it, and get the processed result instantly copied back to your clipboard. No more switching between applications or manually processing text.
 
 ## Features
 
-### 🐍 Python Utilities Management
-- **20 Pre-built Utilities**: Ready-to-use Python scripts for common text processing tasks
-- **Customizable**: Edit and save your own Python utilities
-- **Persistent Storage**: All utilities are saved to a local data store
-- **Clipboard Integration**: Execute utilities directly on clipboard content
+### 🐍 **Python-Powered Clipboard Processing**
+- **20 Pre-built Python Scripts** for common text processing tasks
+- **Custom Script Editor** - Write, edit, and save your own Python scripts
+- **Instant Execution** - Run Python code directly on clipboard content
+- **Persistent Storage** - All your custom scripts saved locally
 
-### 📋 Available Utilities
+### 📋 **Available Scripts**
 
 #### Text Transformation
 - **Convert to Uppercase** - Transform text to uppercase
@@ -46,16 +50,17 @@ ClipDexter is a Kotlin Multiplatform desktop application that provides a compreh
 - **Sort Lines Alphabetically** - Sort lines in alphabetical order
 - **Deduplicate Lines** - Remove duplicate lines while preserving order
 
-### 🎨 Modern UI
+### 🎨 **Modern Jetpack Compose UI**
 - **Material 3 Design** - Beautiful and intuitive interface
-- **Real-time Updates** - Instant feedback on operations
+- **Real-time Script Editor** - Edit Python code with syntax highlighting
+- **Instant Feedback** - See results immediately after execution
 - **Responsive Layout** - Adapts to different screen sizes
 
-## Installation & Setup
+## 🚀 Quick Start
 
 ### Prerequisites
 - **Java 11+** - Required for Kotlin Multiplatform
-- **Python 3** - Required for executing Python utilities
+- **Python 3** - Required for executing Python scripts
 - **Gradle** - Build system (included in project)
 
 ### Running the Application
@@ -73,7 +78,71 @@ ClipDexter is a Kotlin Multiplatform desktop application that provides a compreh
 
 3. **First-time setup**:
    - The application will automatically create the data store on first run
-   - Initial utilities will be loaded into `~/.clipdexter/utilities.json`
+   - Initial scripts will be loaded into `~/.clipdexter/utilities.json`
+
+## 📖 Usage
+
+### Running Scripts
+
+1. **Copy text to clipboard** that you want to process
+2. **Open ClipDexter** and browse the list of scripts
+3. **Click "Run"** on any script to process your clipboard content
+4. **Result is automatically copied** back to your clipboard
+
+### Writing Custom Scripts
+
+1. **Click "Edit"** on any script in the list
+2. **Modify the Python code** in the editor
+3. **Click "Save Changes"** to update the script
+4. **Changes are persisted** to the data store
+
+### Python Scripting Guide
+
+📚 **[Complete Python Scripting Guide](PYTHON_SCRIPTING_GUIDE.md)** - Learn how to write effective Python scripts for clipboard processing, including:
+- Using the `$clip` variable to access clipboard content
+- Common patterns and best practices
+- Data processing examples
+- Error handling techniques
+- Advanced scripting techniques
+
+## 🔧 Development
+
+### Project Structure
+
+```
+composeApp/src/jvmMain/kotlin/dev/pinaki/clipdexter/
+├── App.kt                           # Main application entry point
+├── PyUtilitiesRepository.kt         # Repository for managing Python scripts
+├── PythonExecutor.kt               # Python script execution engine
+├── ClipboardUtil.kt                # Clipboard operations
+├── di/
+│   └── AppModule.kt                # Dependency injection setup
+├── navigation/
+│   └── Navigation.kt               # Screen navigation
+├── services/
+│   └── PythonUtilitiesDataStore.kt # Data persistence layer
+├── ui/screens/
+│   ├── ListScreen.kt               # Scripts list view
+│   └── DetailScreen.kt             # Python script editor
+└── viewmodels/
+    └── UtilitiesViewModel.kt       # UI state management
+```
+
+### Key Technologies
+
+- **Jetpack Compose** - Modern declarative UI framework
+- **Kotlin Multiplatform** - Cross-platform development
+- **Python Integration** - Execute Python scripts on clipboard data
+- **Koin** - Dependency injection
+- **Kotlinx Serialization** - JSON serialization
+- **Kotlinx Coroutines** - Asynchronous programming
+
+### Adding New Scripts
+
+1. **Edit `PyUtilitiesRepository.kt`**
+2. **Add script to `getInitialUtilities()`** map
+3. **Provide unique ID** and Python code
+4. **Update `getUtilityName()`** method with display name
 
 ### Building for Distribution
 
@@ -88,67 +157,7 @@ ClipDexter is a Kotlin Multiplatform desktop application that provides a compreh
 ./gradlew packageDeb
 ```
 
-## Usage
-
-### Running Utilities
-
-1. **Copy text to clipboard** that you want to process
-2. **Open ClipDexter** and browse the list of utilities
-3. **Click "Run"** on any utility to process your clipboard content
-4. **Result is automatically copied** back to your clipboard
-
-### Editing Utilities
-
-1. **Click "Edit"** on any utility in the list
-2. **Modify the Python code** in the editor
-3. **Click "Save Changes"** to update the utility
-4. **Changes are persisted** to the data store
-
-### Data Storage
-
-- **Location**: `~/.clipdexter/utilities.json`
-- **Format**: JSON with utilities and setup status
-- **Backup**: You can backup this file to preserve your custom utilities
-
-## Development
-
-### Project Structure
-
-```
-composeApp/src/jvmMain/kotlin/dev/pinaki/clipdexter/
-├── App.kt                           # Main application entry point
-├── PyUtilitiesRepository.kt         # Repository for managing utilities
-├── PythonExecutor.kt               # Python script execution engine
-├── ClipboardUtil.kt                # Clipboard operations
-├── di/
-│   └── AppModule.kt                # Dependency injection setup
-├── navigation/
-│   └── Navigation.kt               # Screen navigation
-├── services/
-│   └── PythonUtilitiesDataStore.kt # Data persistence layer
-├── ui/screens/
-│   ├── ListScreen.kt               # Utilities list view
-│   └── DetailScreen.kt             # Utility editor
-└── viewmodels/
-    └── UtilitiesViewModel.kt       # UI state management
-```
-
-### Key Technologies
-
-- **Kotlin Multiplatform** - Cross-platform development
-- **Compose Multiplatform** - Modern UI framework
-- **Koin** - Dependency injection
-- **Kotlinx Serialization** - JSON serialization
-- **Kotlinx Coroutines** - Asynchronous programming
-
-### Adding New Utilities
-
-1. **Edit `PyUtilitiesRepository.kt`**
-2. **Add utility to `getInitialUtilities()`** map
-3. **Provide unique ID** and Python code
-4. **Update `getUtilityName()`** method with display name
-
-### Testing
+## 🧪 Testing
 
 ```bash
 # Run all tests
@@ -161,7 +170,7 @@ composeApp/src/jvmMain/kotlin/dev/pinaki/clipdexter/
 ./gradlew test --console=verbose
 ```
 
-## Configuration
+## ⚙️ Configuration
 
 ### Python Path
 The application uses `python3` command. If your system uses a different command, update `PythonExecutor.kt`:
@@ -177,7 +186,7 @@ To change the data store location, modify `PythonUtilitiesDataStore.kt`:
 private val dataFile = File(System.getProperty("user.home"), ".clipdexter/utilities.json")
 ```
 
-## Troubleshooting
+## 🔍 Troubleshooting
 
 ### Common Issues
 
@@ -192,7 +201,7 @@ Run with debug logging:
 ./gradlew run --debug
 ```
 
-## Contributing
+## 🤝 Contributing
 
 1. Fork the repository
 2. Create a feature branch
@@ -200,10 +209,10 @@ Run with debug logging:
 4. Add tests for new functionality
 5. Submit a pull request
 
-## License
+## 📄 License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
 ---
 
-**Built with ❤️ using Kotlin Multiplatform and Compose**
+**Transform your clipboard into a programmable tool with Python and Jetpack Compose! 🐍✨**
