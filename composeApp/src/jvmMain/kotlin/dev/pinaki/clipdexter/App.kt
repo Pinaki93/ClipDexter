@@ -5,7 +5,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import dev.pinaki.clipdexter.ui.KoinExample
+import dev.pinaki.clipdexter.navigation.Navigation
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @Composable
@@ -16,9 +16,7 @@ fun App() {
             modifier = Modifier.fillMaxSize(),
             color = MaterialTheme.colorScheme.background
         ) {
-            // You can switch between PythonRunnerUI and KoinExample
-            // PythonRunnerUI()
-            KoinExample()
+            Navigation()
         }
     }
 }
