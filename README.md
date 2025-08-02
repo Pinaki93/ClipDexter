@@ -6,20 +6,6 @@ ClipDexter is a powerful desktop application built with **Jetpack Compose** that
 
 **Copy → Process → Paste** - That's it! Copy any text to your clipboard, run a Python script on it, and get the processed result instantly copied back to your clipboard. No more switching between applications or manually processing text.
 
-## 📸 Screenshots
-
-### Main Interface - Scripts List
-![ClipDexter Main Interface](docs/images/main-list-screen.png)
-*Browse and run 20+ pre-built Python scripts for text processing*
-
-### Script Editor
-![ClipDexter Script Editor](docs/images/detail-edit-screen.png)
-*Edit and customize Python scripts with real-time syntax highlighting*
-
-### Compact View
-![ClipDexter Compact View](docs/images/compact-view.png)
-*Clean, modern Material 3 interface built with Jetpack Compose*
-
 ## Features
 
 ### 🐍 **Python-Powered Clipboard Processing**
